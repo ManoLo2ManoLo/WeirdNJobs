@@ -5,12 +5,12 @@ import { Modal } from 'react-bulma-components';
 
 function signUpForm() {
     const { Input, Field, Control, Label } = Form;
-    const { ModalCard, ModalCardHead, ModalCardTitle, ModalCardBody, ModalCardFoot} = Modal;
+    const { ModalCard, ModalCardHead, ModalCardTitle, ModalCardBody, ModalCardFoot } = Modal;
     return (
         <>
             <ButtonGroup renderAs={function noRefCheck() { }}>
                 <Button
-                    color="info"
+                    color="light-info"
                     onClick={function noRefCheck() { }}
                 >
                     Sign-Up
@@ -29,12 +29,45 @@ function signUpForm() {
                         <>
                             <Field>
                                 <Label>
+                                    First Name
+                                </Label>
+                                <Control>
+                                    <Input
+                                        placeholder="e.g. John"
+                                        type="text"
+                                    />
+                                </Control>
+                            </Field>
+                            <Field>
+                                <Label>
+                                    Last Name
+                                </Label>
+                                <Control>
+                                    <Input
+                                        placeholder="e.g. John"
+                                        type="text"
+                                    />
+                                </Control>
+                            </Field>
+                            <Field>
+                                <Label>
                                     Username
                                 </Label>
                                 <Control>
                                     <Input
-                                        placeholder="e.g. John Doe"
+                                        placeholder="e.g. Doe"
                                         type="text"
+                                    />
+                                </Control>
+                            </Field>
+                            <Field>
+                                <Label>
+                                    Email
+                                </Label>
+                                <Control>
+                                    <Input
+                                        placeholder="Email goes here!"
+                                        type="email"
                                     />
                                 </Control>
                             </Field>
@@ -51,12 +84,12 @@ function signUpForm() {
                             </Field>
                             <Field>
                                 <Label>
-                                    Email
+                                    Verify Password
                                 </Label>
                                 <Control>
                                     <Input
-                                        placeholder="Email goes here!"
-                                        type="email"
+                                        placeholder="Verify your password here!"
+                                        type="verifyPassword"
                                     />
                                 </Control>
                             </Field>
@@ -67,8 +100,8 @@ function signUpForm() {
                         hasAddons
                         renderAs={function noRefCheck() { }}
                     >
-                        <Button color="success">
-                            Sign-Up
+                        <Button color="info">
+                            Sign Up!
                         </Button>
                     </ModalCardFoot>
                 </ModalCard>
@@ -78,4 +111,4 @@ function signUpForm() {
     )
 };
 
-module.exports = signUpForm;
+export default signUpForm;

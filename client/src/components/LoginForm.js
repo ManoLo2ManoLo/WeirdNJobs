@@ -3,14 +3,14 @@ import { Form } from 'react-bulma-components';
 import { Button, ButtonGroup } from 'react-bulma-components';
 import { Modal } from 'react-bulma-components';
 
-function signUpForm() {
+function LoginForm() {
     const { Input, Field, Control, Label } = Form;
     const { ModalCard, ModalCardHead, ModalCardTitle, ModalCardBody, ModalCardFoot} = Modal;
     return (
         <>
             <ButtonGroup renderAs={function noRefCheck() { }}>
                 <Button
-                    color="info"
+                    color="light-info"
                     onClick={function noRefCheck() { }}
                 >
                     Login
@@ -56,8 +56,8 @@ function signUpForm() {
                         hasAddons
                         renderAs={function noRefCheck() { }}
                     >
-                        <Button color="success">
-                            Sign-Up
+                        <Button color="info">
+                            Log In!
                         </Button>
                     </ModalCardFoot>
                 </ModalCard>
@@ -67,4 +67,4 @@ function signUpForm() {
     )
 };
 
-module.exports = signUpForm;
+module.exports = LoginForm;
