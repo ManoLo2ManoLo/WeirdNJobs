@@ -58,6 +58,7 @@ const typeDefs = gql`
     }
 
     type Query {
+        me: User
         counties: [County]
         services(county: ID, name: String): [Service]
         service(_id: ID!): Service

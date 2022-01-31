@@ -67,4 +67,4 @@ function LoginForm() {
     )
 };
 
-module.exports = LoginForm;
+export default LoginForm;

@@ -2,7 +2,9 @@ import React from 'react';
 import { Navbar } from 'react-bulma-components';
 import logo from '../assets/images/WeirdNJobs.png';
 
-function Navbar() {
+function Navbars() {
+    const { NavbarBrand, NavbarItem, NavbarBurger, NavbarMenu, NavbarContainer, NavbarLink, NavbarDivider} = Navbar;
+
     return(
         <Navbar>
             <NavbarBrand>
@@ -35,4 +37,4 @@ function Navbar() {
     )
 };
 
-export default Navbar;
+export default Navbars;
