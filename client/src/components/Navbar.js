@@ -4,6 +4,7 @@ import logo from '../assets/images/WeirdNJobs.png';
 
 function Navbars() {
     const { NavbarBrand, NavbarItem, NavbarBurger, NavbarMenu, NavbarContainer, NavbarLink, NavbarDivider} = Navbar;
+
     return(
         <Navbar>
             <NavbarBrand>
