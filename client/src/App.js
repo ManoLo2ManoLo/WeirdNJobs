@@ -1,44 +1,20 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import Modal from './components/Modal';
 
 
 const App = () => {
+
+  const [modalSelected, setModalselected] = useState(false)
+
   return (
-    <div className="modal">
-      <div className="modal-background"></div>
-      <div className="modal-content">
-        <div className='field'>
-
-          <div className='field'>
-            <label className='field'>Email</label>
-            <div className='control has-icons-left has-icons-right'>
-              <input className='input-is' type='email'></input>
-              <span className='icon is-small is-left'>
-                <i className='fas fa-envelope'></i>
-              </span>
-              <span className='icon is-small is-right'>
-                <i className='fas fa-exclamation-triangle'></i>
-              </span>
-            </div>
-            <p className='help is-danger'>This email is invalid!</p>
-          </div>
-
-          <div className="field">
-            <label className="label">Password</label>
-            <div className="control has-icons-left has-icons-right">
-              <input className="input is-danger" type="text"></input>
-              <span className="icon is-small is-left">
-                <i className="fas fa-info-circle"></i>
-              </span>
-              <span className="icon is-small is-right">
-                <i className="fas fa-check"></i>
-              </span>
-            </div>
-          </div>
-        </div>
+    <> 
+      <div>
+        <p>Here we go</p>
+        <button className='are-small is-rounded' onClick={() => setModalselected(true)}>Open modal</button>
+        {modalSelected.toString()}
       </div>
-      <button className="modal-close is-small" aria-label="close"></button>
-    </div>
+        {modalSelected ? <Modal email="giovanny@gmail.com" password="******" onClose={() => setModalselected(false)} /> : <></>}
+    </>
   );
 }
 
