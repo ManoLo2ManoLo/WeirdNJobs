@@ -5,10 +5,6 @@ import { LOGIN_USER } from "../utils/mutations";
 
 
 function Login() {
-    const inputStyle = {
-        width : '30%'
-    }
-
     const [formState, setFormState] = useState({ email: "", password: "" });
     const [login, { error }] = useMutation(LOGIN_USER); 
 
@@ -39,24 +35,24 @@ function Login() {
     return (
         <form onSubmit={handleFormSubmit}>
             <div className='field'>
-                <label className='label' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Email</label>
-                <div className='control' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <input className='input is-small' style={inputStyle} type='email' name='email' id='email' onChange={handleChange}></input>
+                <label className='label flex-center'>Email</label>
+                <div className='control flex-center'>
+                    <input className='input is-small width30' type='email' name='email' id='email' onChange={handleChange}></input>
                 </div>
             </div>
 
             <div className="field">
-                <label className="label" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Password</label>
-                <div className="control" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <input className="input is-small" style={inputStyle} type="password" name='password' id='password' onChange={handleChange}></input>
+                <label className="label flex-center">Password</label>
+                <div className="control flex-center">
+                    <input className="input is-small width30" type="password" name='password' id='password' onChange={handleChange}></input>
                 </div>
                 {error ? (
-                    <div>
+                    <div className='flex-center'>
                         <p className="error-text">The email or password is incorrect.</p>
                     </div>
                 ) : null}
-                <div className='buttons' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <button type='submit' className='button is-info is-light is-small' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Login</button>
+                <div className='buttons flex-center'>
+                    <button type='submit' className='button is-info is-light is-small flex-center'>Login</button>
                 </div>
             </div>
         </form>

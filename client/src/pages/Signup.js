@@ -8,10 +8,16 @@ function Signup() {
   const [formState, setFormState] = useState({ firstName: '', lastName: '', username: '', email: '', password: '', verify: '', county: '' });
   const [addUser] = useMutation(ADD_USER);
 
+  const giveCountyAName = (event) => {
+    let { value } = event.target
+    formState.county = value;
+  }
+
   const handleFormSubmit = async (event) => {
     if (formState.firstName && formState.lastName && formState.username && formState.email && 
-    formState.password && formState.verify && formState.county && formState.password === formState.verify) {
+    formState.password && formState.verify && formState.password === formState.verify) {
       event.preventDefault();
+
 
       const mutationResponse = await addUser({
         variables: {
@@ -40,49 +46,53 @@ function Signup() {
   return (
     <form onSubmit={handleFormSubmit}>
       <div className='field'>
-        <label className='label' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>First Name</label>
-        <div className='control' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <input className='input is-small' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%' }} type='text' onChange={handleChange}></input>
+        <label className='label flex-center'>First Name</label>
+        <div className='control flex-center'>
+          <input className='input is-small flex-center width30' type='firstName' name='firstName' id='firstName' onChange={handleChange}></input>
         </div>
       </div>
+
       <div className='field'>
-        <label className='label' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Last Name</label>
-        <div className='control' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <input className='input is-small' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%' }} type='text' onChange={handleChange}></input>
+        <label className='label flex-center'>Last Name</label>
+        <div className='control flex-center'>
+          <input className='input is-small flex-center width30' type='lastName' name='lastName' id='lastName' onChange={handleChange}></input>
         </div>
       </div>
+
       <div className='field'>
-        <label className='label' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Username</label>
-        <div className='control' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <input className='input is-small' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%' }} type='text' onChange={handleChange}></input>
+        <label className='label flex-center'>Username</label>
+        <div className='control flex-center'>
+          <input className='input is-small flex-center width30' type='username' name='username' id='username' onChange={handleChange}></input>
         </div>
       </div>
+
       <div className='field'>
-        <label className='label' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Email</label>
-        <div className='control' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <input className='input is-small' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%' }} type='email' onChange={handleChange}></input>
+        <label className='label flex-center'>Email</label>
+        <div className='control flex-center'>
+          <input className='input is-small flex-center width30' type='email' name='email' id='email' onChange={handleChange}></input>
         </div>
-        <p className='help is-danger' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>This email is invalid!</p>
       </div>
 
       <div className="field">
-        <label className="label" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Password</label>
-        <div className="control" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <input className="input is-small" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%' }} type="text" onChange={handleChange}></input>
+        <label className="label flex-center">Password</label>
+        <div className="control flex-center">
+          <input className="input is-small flex-center width30" type="password" name='password' id='password' onChange={handleChange}></input>
         </div>
       </div>
-      <div classname='field'>
-        <label className='label' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Verify Password</label>
-        <div className='control' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <input className='input is-small' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%' }} type='email' onChange={handleChange}></input>
-        </div>
-        <p className='help is-danger' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>This Password is invalid!</p>
-      </div>
+
       <div className='field'>
-        <label className='label' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Choose county!</label>
-        <div className='control' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <div className='select is-small' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <select style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} onChange={handleChange}>
+        <label className='label flex-center'>Verify Password</label>
+        <div className='control flex-center'>
+          <input className='input is-small flex-center width30' type='password' name='verify' id='verify' onChange={handleChange}></input>
+        </div>
+      </div>
+
+      <div className='field'>
+        <label className='label flex-center'>Choose county!</label>
+        <div className='control flex-center'>
+          <div className='select is-small flex-centers'>
+            <select className='flex-center' onChange={giveCountyAName}>
+              <option></option>
               <option>Atlantic</option>
               <option>Bergen</option>
               <option>Burlington</option>
@@ -108,15 +118,16 @@ function Signup() {
           </div>
         </div>
       </div>
+
       <div className='field'>
         <div className='control'>
-          <label className='checkbox' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <input type='checkbox' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} onChange={handleChange}></input>
+          <label className='checkbox flex-center'>
+            <input type='checkbox' className='flex-center' onChange={handleChange}></input>
             I agree to the <a href='#terms'>terms and conditions.</a>
           </label>
         </div>
       </div>
-      <div className='buttons' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div className='buttons flex-center'>
         <button type='submit' className='button is-info is-light is-small'>Sign-Up</button>
       </div>
     </form>
