@@ -8,9 +8,9 @@ function Nav() {
     if (Auth.loggedIn()) {
       return (
         <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link" href='#burger'>
+              <p className="navbar-link">
                 Menu
-              </a>
+              </p>
               <div className="navbar-dropdown">
                 <Link to='/profile'>
                   <p className="navbar-item">Dashboard</p>
