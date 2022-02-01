@@ -1,7 +1,7 @@
 import React from 'react';
 
-const App = () => {
 
+function signUpForm() {
   return (
     <>
       <div className='field'>
@@ -33,10 +33,10 @@ const App = () => {
       <div className="field">
         <label className="label" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Password</label>
         <div className="control" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <input className="input is-small" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%' }} type="text" ></input>
+          <input className="input is-small" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%' }} type="text"></input>
         </div>
       </div>
-      <div className='field'>
+      <div classname='field'>
         <label className='label' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Verify Password</label>
         <div className='control' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <input className='input is-small' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%' }} type='email' ></input>
@@ -85,8 +85,8 @@ const App = () => {
         <button className='button is-info is-light is-small'>Sign-Up</button>
       </div>
     </>
-  );
-}
 
+  )
+};
 
-export default App;
+export default signUpForm;
