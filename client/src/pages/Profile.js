@@ -1,10 +1,15 @@
 import React from 'react';
 
+import profile from '../assets/images/default.png';
+
 import { Redirect, useParams } from "react-router-dom";
 import { useQuery } from '@apollo/client';
 import { QUERY_USER, GET_ME } from "../utils/queries";
 
 import Auth from"../utils/auth";
+
+import ServiceForm from '../components/ServiceForm';
+import UserReviewForm from '../components/UserReviewForm';
 
 const Profile = () => {
     const { username: userParam } = useParams();
@@ -32,10 +37,40 @@ const Profile = () => {
     }
 
     return (
-            <div className="flex-row mb-3">
-            <h2 className="bg-dark text-secondary p-3 display-inline-block">
-                Viewing {userParam ? `${user.username}'s` : "your"} profile.
-            </h2>
+        <div className='container'>
+            <div className='flex-row-even'>
+                <div className='width50'>
+                    <h1>{user.firstName} {user.lastName}</h1>
+                    <h2>@{user.username}</h2>
+
+                    <div>
+                        <img src={profile} alt='profile'/>
+                    </div>
+
+                    <p>{user.county} County</p>
+                </div>
+                <div className='width50'>
+                    {userParam ? <UserReviewForm/>: <ServiceForm/> }
+
+                    {user.services.map(service => (
+                        <div className='card my-4'>
+                            <header className='card-header'>
+                                <p className='card-header-title width30'>@{user.username}</p>
+                                <p className='card-header-title width30'>{service.serviceTitle}</p>
+                            </header>
+                            <div className='card-content'>
+                                <div className='content'>
+                                    {service.serviceBody}
+                                </div>
+                            </div>
+                            <footer className='flex-row'>
+                                <p className='card-footer-item width30'>Consultation Fee: ${service.fee}</p>
+                                <p className='card-footer-item width30'>{service.createdAt}</p>
+                            </footer>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     )
 };
