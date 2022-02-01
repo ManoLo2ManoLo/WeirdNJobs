@@ -1,7 +1,63 @@
 import React from 'react';
+import Auth from '../utils/auth';
+import { Link } from "react-router-dom";
 import logo from '../assets/images/WeirdNJobs.png';
 
 function Nav() {
+  function showNavigation() {
+    if (Auth.loggedIn()) {
+      return (
+        <div className="navbar-item has-dropdown is-hoverable">
+              <a className="navbar-link" href='#burger'>
+                Menu
+              </a>
+              <div className="navbar-dropdown">
+                <Link to='/profile'>
+                  <p className="navbar-item">Dashboard</p>
+                </Link>
+                <Link to='/myorders'>
+                  <p className="navbar-item">My Orders</p>
+                </Link>
+            </div>
+        </div>
+      )
+    } else {
+      return ''
+    }
+  }
+
+  function showLogButton() {
+    if (Auth.loggedIn()) {
+      return (
+        <div className="navbar-end">
+          <div className="navbar-item">
+            <div className="buttons">
+              <a className="button is-light" href='/' onClick={() => Auth.logout()}>
+                Log Out
+              </a>
+            </div>
+          </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className="navbar-end">
+          <div className="navbar-item">
+            <div className="buttons">
+              <Link to='/signup'>
+                  <p className="button has-background-info-light"><strong>Sign up</strong></p>
+              </Link>
+              <Link to='/login'>
+                <p className="button is-light">Log in</p>
+              </Link>
+            </div>
+          </div>
+        </div>
+      )
+    }
+  }
+
+
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
@@ -17,42 +73,8 @@ function Nav() {
         </div>
 
         <div id="navbar" className="navbar-menu ">
-          <div className="navbar-start">
-            <a className="navbar-item" href='#burger'>
-              Home
-            </a>
-
-            <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link" href='#burger'>
-                More
-              </a>
-
-              <div className="navbar-dropdown">
-                <a className="navbar-item" href='#burger'>
-                  About
-                </a>
-                <a className="navbar-item" href='#burger'>
-                  Jobs
-                </a>
-                <a className="navbar-item" href='#burger'>
-                  Contact Us
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="navbar-end">
-            <div className="navbar-item">
-              <div className="buttons">
-                <a className="button has-background-info-light" href='/signup'>
-                  <strong>Sign up</strong>
-                </a>
-                <a className="button is-light" href='/login'>
-                  Log in
-                </a>
-              </div>
-            </div>
-          </div>
+          {showNavigation()}
+          {showLogButton()}
         </div>
       </nav>
     )
