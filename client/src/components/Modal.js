@@ -29,6 +29,9 @@ function Modal(props) {
                             <i className="fas fa-check"></i>
                         </span>
                     </div>
+                    <div className='buttons'>
+                        <button className='button is-info is-light'>Login</button>
+                    </div>
                 </div>
 
             </div>
