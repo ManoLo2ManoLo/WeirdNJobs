@@ -51,7 +51,7 @@ function Login() {
                     <input className="input is-small" style={inputStyle} type="password" name='password' id='password' onChange={handleChange}></input>
                 </div>
                 {error ? (
-                    <div>
+                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <p className="error-text">The email or password is incorrect.</p>
                     </div>
                 ) : null}
