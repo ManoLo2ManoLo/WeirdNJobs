@@ -1,39 +1,60 @@
 import React from 'react';
-import { Navbar } from 'react-bulma-components';
 import logo from '../assets/images/WeirdNJobs.png';
 
 function Navbars() {
-    const { NavbarBrand, NavbarItem, NavbarBurger, NavbarMenu, NavbarContainer, NavbarLink, NavbarDivider} = Navbar;
+    return (
+        <nav className="navbar" role="navigation" aria-label="main navigation">
+        <div className="navbar-brand">
+          <a className="navbar-item" href="#Home">
+            <img src={logo} width="112" height="28" alt='logo'></img>
+          </a>
 
-    return(
-        <Navbar>
-            <NavbarBrand>
-                <NavbarItem href='#'>
-                    <img src={logo} alt='Logo for site' height={40} width={120}/>
-                </NavbarItem>
-                <NavbarBurger />
-            </NavbarBrand>
-            <NavbarMenu>
-                <NavbarContainer>
-                    <NavbarItem href='#Home'>
-                        <NavbarLink>
-                            Home
-                        </NavbarLink>
-                    </NavbarItem>
-                </NavbarContainer>
-                <NavbarContainer align='end'>
-                    <NavbarItem href='#LogIn'>
-                        Log In
-                    </NavbarItem>
-                </NavbarContainer>
-                <NavbarDivider />
-                <NavbarContainer align='end'>
-                    <NavbarItem href='#LogIn'>
-                        Sign Up
-                    </NavbarItem>
-                </NavbarContainer>
-            </NavbarMenu>
-        </Navbar>
+          <a role="button" className="navbar-burger navbar-link navbar-dropdown" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" href='#burger'>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbar" className="navbar-menu ">
+          <div className="navbar-start">
+            <a className="navbar-item" href='#burger'>
+              Home
+            </a>
+
+            <div className="navbar-item has-dropdown is-hoverable">
+              <a className="navbar-link" href='#burger'>
+                More
+              </a>
+
+              <div className="navbar-dropdown">
+                <a className="navbar-item" href='#burger'>
+                  About
+                </a>
+                <a className="navbar-item" href='#burger'>
+                  Jobs
+                </a>
+                <a className="navbar-item" href='#burger'>
+                  Contact Us
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <div className="buttons">
+                <a className="button has-background-info-light" href='#burger'>
+                  <strong>Sign up</strong>
+                </a>
+                <a className="button is-light" href='#burger'>
+                  Log in
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
     )
 };
 
