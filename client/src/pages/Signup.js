@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function signUpForm() {
+function Signup() {
   return (
     <>
       <div className='field'>
@@ -89,4 +89,4 @@ function signUpForm() {
   )
 };
 
-export default signUpForm;
+export default Signup;

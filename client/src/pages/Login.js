@@ -1,7 +1,10 @@
 import React from 'react';
 
+function Login() {
+    const inputStyle = {
+        width : '30%'
+    };
 
-function LoginForm() {
     return (
         <>
             <div className='field'>
@@ -26,4 +29,4 @@ function LoginForm() {
     )
 };
 
-export default LoginForm;
+export default Login;

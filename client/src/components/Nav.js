@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from '../assets/images/WeirdNJobs.png';
 
-function Navbars() {
+function Nav() {
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <a className="navbar-item" href="#Home">
+          <a className="navbar-item" href="/">
             <img src={logo} width="112" height="28" alt='logo'></img>
           </a>
 
@@ -44,10 +44,10 @@ function Navbars() {
           <div className="navbar-end">
             <div className="navbar-item">
               <div className="buttons">
-                <a className="button has-background-info-light" href='#burger'>
+                <a className="button has-background-info-light" href='/signup'>
                   <strong>Sign up</strong>
                 </a>
-                <a className="button is-light" href='#burger'>
+                <a className="button is-light" href='/login'>
                   Log in
                 </a>
               </div>
@@ -58,4 +58,4 @@ function Navbars() {
     )
 };
 
-export default Navbars;
+export default Nav;

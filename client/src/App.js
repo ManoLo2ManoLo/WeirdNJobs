@@ -1,90 +1,52 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
+import Nav from './components/Nav';
+
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Home from './pages/Home';
+
+const httpLink = createHttpLink({
+  uri: '/graphql'
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : ''
+    }
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache()
+});
 
 const App = () => {
-
   return (
-    <>
-      <div className='field'>
-        <label className='label' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>First Name</label>
-        <div className='control' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <input className='input is-small' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%' }} type='text' ></input>
+    <ApolloProvider client={client}>
+      <Router>
+        <div>
+          <Nav />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/signup' component={Signup} />
+          </Switch>
         </div>
-      </div>
-      <div className='field'>
-        <label className='label' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Last Name</label>
-        <div className='control' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <input className='input is-small' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%' }} type='text' ></input>
-        </div>
-      </div>
-      <div className='field'>
-        <label className='label' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Username</label>
-        <div className='control' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <input className='input is-small' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%' }} type='text' ></input>
-        </div>
-      </div>
-      <div className='field'>
-        <label className='label' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Email</label>
-        <div className='control' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <input className='input is-small' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%' }} type='email' ></input>
-        </div>
-        <p className='help is-danger' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>This email is invalid!</p>
-      </div>
-
-      <div className="field">
-        <label className="label" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Password</label>
-        <div className="control" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <input className="input is-small" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%' }} type="text" ></input>
-        </div>
-      </div>
-      <div className='field'>
-        <label className='label' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Verify Password</label>
-        <div className='control' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <input className='input is-small' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '30%' }} type='email' ></input>
-        </div>
-        <p className='help is-danger' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>This Password is invalid!</p>
-      </div>
-      <div className='field'>
-        <label className='label' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Choose county!</label>
-        <div className='control' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <div className='select is-small' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <select style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <option>Atlantic</option>
-              <option>Bergen</option>
-              <option>Burlington</option>
-              <option>Camden</option>
-              <option>Cape May</option>
-              <option>Cumberland</option>
-              <option>Essex</option>
-              <option>Gloucester</option>
-              <option>Hudson</option>
-              <option>Hunterdon</option>
-              <option>Mercer</option>
-              <option>Middlesex</option>
-              <option>Monmouth</option>
-              <option>Morris</option>
-              <option>Ocean</option>
-              <option>Passaic</option>
-              <option>Salem</option>
-              <option>Somerset</option>
-              <option>Sussex</option>
-              <option>Union</option>
-              <option>Warren</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div className='field'>
-        <div className='control'>
-          <label className='checkbox' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <input type='checkbox' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}></input>
-            I agree to the <a href='#terms'>terms and conditions.</a>
-          </label>
-        </div>
-      </div>
-      <div className='buttons' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <button className='button is-info is-light is-small'>Sign-Up</button>
-      </div>
-    </>
+      </Router>
+    </ApolloProvider>
   );
 }
 
