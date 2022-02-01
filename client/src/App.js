@@ -1,32 +1,45 @@
-import React, { useState } from 'react';
-import SignupForm from './components/SignupForm';
-import LoginForm from './components/LoginForm';
-import Navbar from './components/Navbar';
+import React from 'react';
 
-function App() {
-  const [signUpFormselected, setSignupFormselected] = useState(false)
-  const [loginFormselected, setLoginFormselected] = useState(false)
 
+
+const App = () => {
   return (
-    <div className='center'>
-      <Navbar
-        setSignupFormselected={setSignupFormselected}
-        setLoginFormselected={setLoginFormselected}
-      >
-      </Navbar>
-      <main>
-        {signUpFormselected ? (
-          <>
-            <SignupForm></SignupForm>
-          </>
-        ) : loginFormselected ? (
-          <>
-            <LoginForm></LoginForm>
-          </>
-        ): <></> }
-      </main>
+    <div className="modal">
+      <div className="modal-background"></div>
+      <div className="modal-content">
+        <div className='field'>
+
+          <div className='field'>
+            <label className='field'>Email</label>
+            <div className='control has-icons-left has-icons-right'>
+              <input className='input-is' type='email'></input>
+              <span className='icon is-small is-left'>
+                <i className='fas fa-envelope'></i>
+              </span>
+              <span className='icon is-small is-right'>
+                <i className='fas fa-exclamation-triangle'></i>
+              </span>
+            </div>
+            <p className='help is-danger'>This email is invalid!</p>
+          </div>
+
+          <div className="field">
+            <label className="label">Password</label>
+            <div className="control has-icons-left has-icons-right">
+              <input className="input is-danger" type="text"></input>
+              <span className="icon is-small is-left">
+                <i className="fas fa-info-circle"></i>
+              </span>
+              <span className="icon is-small is-right">
+                <i className="fas fa-check"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button className="modal-close is-small" aria-label="close"></button>
     </div>
-  )
+  );
 }
 
 

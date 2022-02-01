@@ -1,113 +1,105 @@
 import React from 'react';
-import { Form } from 'react-bulma-components';
-import { Button, ButtonGroup } from 'react-bulma-components';
-import { Modal } from 'react-bulma-components';
+
 
 function signUpForm() {
-    const { Input, Field, Control, Label } = Form;
-    const { ModalCard, ModalCardHead, ModalCardTitle, ModalCardBody, ModalCardFoot } = Modal;
     return (
-        <>
-            <ButtonGroup renderAs={function noRefCheck() { }}>
-                <Button
-                    color="light-info"
-                    onClick={function noRefCheck() { }}
-                >
-                    Sign-Up
-                </Button>
-            </ButtonGroup>
-            <Modal
-                onClose={function noRefCheck() { }}
-            >
-                <ModalCard>
-                    <ModalCardHead>
-                        <ModalCardTitle>
-                            Sign-up Form
-                        </ModalCardTitle>
-                    </ModalCardHead>
-                    <ModalCardBody>
-                        <>
-                            <Field>
-                                <Label>
-                                    First Name
-                                </Label>
-                                <Control>
-                                    <Input
-                                        placeholder="e.g. John"
-                                        type="text"
-                                    />
-                                </Control>
-                            </Field>
-                            <Field>
-                                <Label>
-                                    Last Name
-                                </Label>
-                                <Control>
-                                    <Input
-                                        placeholder="e.g. John"
-                                        type="text"
-                                    />
-                                </Control>
-                            </Field>
-                            <Field>
-                                <Label>
-                                    Username
-                                </Label>
-                                <Control>
-                                    <Input
-                                        placeholder="e.g. Doe"
-                                        type="text"
-                                    />
-                                </Control>
-                            </Field>
-                            <Field>
-                                <Label>
-                                    Email
-                                </Label>
-                                <Control>
-                                    <Input
-                                        placeholder="Email goes here!"
-                                        type="email"
-                                    />
-                                </Control>
-                            </Field>
-                            <Field>
-                                <Label>
-                                    Password
-                                </Label>
-                                <Control>
-                                    <Input
-                                        placeholder="Write here weirdo!"
-                                        type="password"
-                                    />
-                                </Control>
-                            </Field>
-                            <Field>
-                                <Label>
-                                    Verify Password
-                                </Label>
-                                <Control>
-                                    <Input
-                                        placeholder="Verify your password here!"
-                                        type="verifyPassword"
-                                    />
-                                </Control>
-                            </Field>
-                        </>
-                    </ModalCardBody>
-                    <ModalCardFoot
-                        align="center"
-                        hasAddons
-                        renderAs={function noRefCheck() { }}
-                    >
-                        <Button color="info">
-                            Sign Up!
-                        </Button>
-                    </ModalCardFoot>
-                </ModalCard>
-            </Modal>
-        </>
+        <div className='field'>
+            <div className='field'>
+                <label className='label'>First Name</label>
+                <div className='control'>
+                    <input className='input' type='text' placeholder='Input your first name here!'></input>
+                </div>
+            </div>
+            <div className='field'>
+                <label className='label'>Last Name</label>
+                <div className='control'>
+                    <input className='input' type='text' placeholder='Input your last name here!'></input>
+                </div>
+            </div>
+            <div className='field'>
+                <label className='label'>Username</label>
+                <div className='control'>
+                    <input className='input' type='text' placeholder='Input your username here!'></input>
+                </div>
+            </div>
+            <div classname='field'>
+                <label className='field'>Email</label>
+                <div className='control has-icons-left has-icons-right'>
+                    <input className='input-is' type='email' placeholder='Input your email here!'></input>
+                    <span className='icon is-small is-left'>
+                        <i className='fas fa-envelope'></i>
+                    </span>
+                    <span className='icon is-small is-right'>
+                        <i className='fas fa-exclamation-triangle'></i>
+                    </span>
+                </div>
+                <p className='help is-danger'>This email is invalid!</p>
+            </div>
 
+            <div className="field">
+                <label className="label">Password</label>
+                <div className="control has-icons-left has-icons-right">
+                    <input className="input is-danger" type="text" placeholder="Password goes here!" value="bulma"></input>
+                    <span className="icon is-small is-left">
+                        <i className="fas fa-info-circle"></i>
+                    </span>
+                    <span className="icon is-small is-right">
+                        <i className="fas fa-check"></i>
+                    </span>
+                </div>
+            </div>
+            <div className="field">
+                <label className="label">Verify your password</label>
+                <div className="control has-icons-left has-icons-right">
+                    <input className="input is-danger" type="text" placeholder="Verify your password!" value="bulma"></input>
+                    <span className="icon is-small is-left">
+                        <i className="fas fa-info-circle"></i>
+                    </span>
+                    <span className="icon is-small is-right">
+                        <i className="fas fa-check"></i>
+                    </span>
+                </div>
+                <p className="help is-danger">This password is invalid!</p>
+            </div>
+            <div className='field'>
+                <label className='label'>Choose county!</label>
+                <div className='control'>
+                    <div className='select'>
+                        <select>
+                            <option>Atlantic</option>
+                            <option>Bergen</option>
+                            <option>Burlington</option>
+                            <option>Camden</option>
+                            <option>Cape May</option>
+                            <option>Cumberland</option>
+                            <option>Essex</option>
+                            <option>Gloucester</option>
+                            <option>Hudson</option>
+                            <option>Hunterdon</option>
+                            <option>Mercer</option>
+                            <option>Middlesex</option>
+                            <option>Monmouth</option>
+                            <option>Morris</option>
+                            <option>Ocean</option>
+                            <option>Passaic</option>
+                            <option>Salem</option>
+                            <option>Somerset</option>
+                            <option>Sussex</option>
+                            <option>Union</option>
+                            <option>Warren</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div className='field'>
+                <div className='control'>
+                    <label className='checkbox'>
+                        <input type='checkbox'></input>
+                        I agree to the <a href='#'>terms and conditions.</a>
+                    </label>
+                </div>
+            </div>
+        </div>
     )
 };
 
