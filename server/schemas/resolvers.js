@@ -6,8 +6,8 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc')
 const resolvers = {
     Query: {
         me: async (parent, args, context) => {
-            if (context.user) {
-                const userData = await User.findOne({ id: context.user._id })
+            if (context.user) {           
+                const userData = await User.findOne({ _id: context.user._id })
                     .select('-__v -password')
                     .populate('services')
                     .populate('orders')
@@ -22,20 +22,13 @@ const resolvers = {
         counties: async () => {
             return await County.find();
         },
-        services: async (parent, { county, name }) => {
-            const params = {};
+        county: async (parent,args, context) => {
+            return County.findOne({ name: args.name});
+        },
+        services: async (parent, { username }) => {
+            const params = username ? { username } : {};
 
-            if (category) {
-                params.county = county;
-            }
-
-            if (name) {
-                params.name = {
-                    $regex: name
-                }
-            }
-
-            return await Service.find(params).populate('county');
+            return Service.find(params).sort({ createdAt: -1 });
         },
         service: async (parent, { _id }) => {
             return await Service.findById(_id).populate('county');
@@ -70,6 +63,7 @@ const resolvers = {
         },
         allservices: async () => {
             return Service.find()
+                .populate('reviews')
                 .populate('county')
         },
         order: async (parent, { _id }, context) => {

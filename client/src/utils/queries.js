@@ -15,14 +15,6 @@ export const GET_ME = gql`
                 serviceTitle
                 serviceBody
                 fee
-                reviews {
-                    _id
-                    reviewTitle
-                    reviewBody
-                    username
-                    rating
-                    createdAt
-                }
                 createdAt
             }
             orders {
@@ -99,3 +91,33 @@ export const QUERY_USER = gql`
         }
     }
 `;
+
+export const QUERY_SERVICES = gql`
+    query services($username: String) {
+        services(username: $username) {
+            _id
+            serviceTitle
+            serviceBody
+            fee
+            username
+            createdAt
+        }
+    }     
+`
+
+export const QUERY_COUNTIES = gql`
+    query counties {
+        counties {
+            _id
+            name
+        }
+    }
+`
+
+export const QUERY_COUNTY = gql`
+    query County($name: String!) {
+        county(name: $name) {
+            _id
+        }
+    }
+`
