@@ -63,6 +63,7 @@ const typeDefs = gql`
         services(county: ID, name: String): [Service]
         service(_id: ID!): Service
         users: [User]
+        user(username: String!): User
         allusers: [User]
         allservices: [Service]
         order(_id: ID!): Order
