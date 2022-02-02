@@ -48,6 +48,10 @@ code {
 	grid-gap: 1em;
 }
 
+.width10 {
+  width: 10%;
+}
+
 .width30 {
   width: 30%;
 }

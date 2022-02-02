@@ -73,7 +73,7 @@ function ServiceForm() {
                 <div className='field'>
                     <label className='label'>Consulation Fee</label>
                     <div className='control'>
-                        <input className='input is-small' type='number' name='fee' id='fee' onChange={handleChange}></input>
+                        <input className='input is-small' type='number' name='fee' id='fee' placeholder='Must be over $1' onChange={handleChange}></input>
                     </div>
                 </div>
                 <div className='buttons'>
