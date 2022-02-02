@@ -46,10 +46,13 @@ const Profile = () => {
                     </div>
 
                     <div>
-                        <img src={profile} className='image-shadow' alt='profile'/>
+                        <img src={profile} className='image-shadow size-change' alt='profile'/>
                     </div>
                     <div className='box width36 tags has-text-weight-bold is-underlined'>
                         <p>{user.county} County</p>
+                    </div>
+                    <div className='box width36 tags is-italic'>
+                        <p>If you have any questions, please email me at{user.email}</p>
                     </div>
                     
                 </div>
