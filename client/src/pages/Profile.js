@@ -52,7 +52,7 @@ const Profile = () => {
                         <p>{user.county} County</p>
                     </div>
                     <div className='box width36 tags is-italic'>
-                        <p>If you have any questions, please email me at{user.email}</p>
+                        <p>If you have any questions, please email me at <a href={`mailto: ${user.email}`}>{user.email}</a></p>
                     </div>
                     
                 </div>

@@ -57,7 +57,11 @@ code {
 }
 
 .tags {
-  background-color: #dbe5ec;;
+  background-color: #dbe5ec;
+}
+
+.tagger {
+  background-color: #dbe5ec;
 }
 
 .footer-head{
