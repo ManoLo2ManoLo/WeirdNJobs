@@ -6,33 +6,39 @@ import { ADD_ORDER } from '../utils/mutations';
 
 
 function Success(props) {
-    const { serviceId: id } = useParams();
-    const [addOrder] = useMutation(ADD_ORDER); 
-    const services = id;
+  const { serviceId: id } = useParams();
+  const [addOrder] = useMutation(ADD_ORDER);
+  const services = id;
 
-    useEffect(() => {
-        async function saveOrder() { 
-            await addOrder({ variables: { services }});
+  useEffect(() => {
+    async function saveOrder() {
+      await addOrder({ variables: { services } });
 
-            setTimeout(() => {
-                window.location.assign('/');
-            }, 3000);
-        }
+      setTimeout(() => {
+        window.location.assign('/');
+      }, 3000);
+    }
 
-        saveOrder()
-    }, [addOrder])
+    saveOrder()
+  }, [addOrder])
 
-    return (
-      <div>
-          <h1>Success!</h1>
-          <h2>
+
+  return (
+    <div>
+      <div class="card box is-center">
+        <header class="card-header tags">
+          <p class="card-header-title tags">
             Thank you for your purchase!
-          </h2>
-          <h2>
-            You will now be redirected to the homepage
-          </h2>
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            You will now be redirected to the homepage!
+          </div>
+        </div>
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 export default Success;
