@@ -8,9 +8,9 @@ function Card() {
 
     return (
         <>
-            <div className='container'>
+            <div className='container flex-row-center'>
                 {data?.allservices.map(service => (
-                    <div className='card my-4 width36'>
+                    <div className='card my-5 width36 mx-5 heightauto'>
                         <header className='card-header footer-head'>
                             <a href={`/profile/${service.username}`}><p className='card-header-title width30'>@{service.username}</p></a>
                             <p className='card-header-title width30 is-underlined'>{service.serviceTitle}</p>
