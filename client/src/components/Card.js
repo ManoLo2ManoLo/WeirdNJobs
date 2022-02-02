@@ -3,14 +3,16 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_SERVICES } from '../utils/queries';
 
+import PurchaseButton from './PurchaseButton';
+
 function Card() {
     const { data } = useQuery(QUERY_ALL_SERVICES);
 
     return (
         <>
-            <div className='container'>
+            <div className='container flex-row-center'>
                 {data?.allservices.map(service => (
-                    <div className='card my-4 width36'>
+                    <div className='card my-5 width36 mx-5 heightauto'>
                         <header className='card-header footer-head'>
                             <a href={`/profile/${service.username}`}><p className='card-header-title width30'>@{service.username}</p></a>
                             <p className='card-header-title width30 is-underlined'>{service.serviceTitle}</p>
@@ -25,9 +27,12 @@ function Card() {
                             <p className='card-footer-item width30 is-italic'>{service.createdAt}</p>
                         </footer>
                         <div className='card-content footer-head'>
-                            <button className='box button button-color'>
-                                <a href={`/service/${service._id}`}>View {service.reviewCount} review(s)</a>
-                            </button>
+                            <div className='flex-row'>
+                                <button className='box button button-color'>
+                                    <a href={`/service/${service._id}`}>View {service.reviewCount} review(s)</a>
+                                </button>
+                                <PurchaseButton dataFromParent = {service._id} />
+                            </div>
                         </div>
                     </div>
                 ))}

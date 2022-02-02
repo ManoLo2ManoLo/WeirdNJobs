@@ -15,6 +15,7 @@ function ServiceReviewList() {
 
     return (
         <div>
+            <h1>Reviews</h1>
             {service?.reviews.map(review => (
                 <div className='card my-4'>
                     <header className='card-header footer-head'>

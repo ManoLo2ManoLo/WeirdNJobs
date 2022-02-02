@@ -11,7 +11,21 @@ const resolvers = {
                     .select('-__v -password')
                     .populate('services')
                     .populate('orders')
+                    .populate({
+                        path: 'orders',
+                        populate: {
+                            path: 'services',
+                            model: 'Service'
+                        }
+                    })
                     .populate('reviews')
+                    .populate({
+                        path: 'reviews',
+                        populate: {
+                            path: 'reviews',
+                            model: 'Review'
+                        }
+                    })
 
                 return userData;
             }
@@ -81,22 +95,22 @@ const resolvers = {
 
         checkout: async (parent, args, context) => {
             const url = new URL(context.headers.referer).origin;
-            const order = new Order({ services: args.services });
+            const order = new Order({ services: args.services})
             const line_items = [];
 
             const { services } = await order.populate('services').execPopulate();
 
             for (let i = 0; i < services.length; i++) {
                 const service = await stripe.products.create({
-                    serviceTitle: services[i].serviceTitle,
-                    serviceBody: services[i].serviceBody
-                });
+                    name: services[i].serviceTitle,
+                    description: services[i].serviceBody
+                })
 
                 const price = await stripe.prices.create({
-                    service: service.id,
-                    unit_amount: sercives[i].fee,
+                    product: service.id,
+                    unit_amount: services[i].fee * 100,
                     currency: 'usd'
-                });
+                })
 
                 line_items.push({
                     price: price.id,
@@ -108,11 +122,11 @@ const resolvers = {
                 payment_method_types: ['card'],
                 line_items,
                 mode: 'payment',
-                success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+                success_url: `${url}/${services[0]._id}/success?session_id={CHECKOUT_SESSION_ID}/`,
                 cancel_url: `${url}/`
-            })
+            });
 
-            return { session: session.id };
+            return { session: session.id }
         }
     },
 

@@ -161,3 +161,25 @@ export const QUERY_COUNTY = gql`
         }
     }
 `
+
+
+export const QUERY_REVIEW = gql`
+    query review($username: String) {
+        review(username: $username) {
+            _id
+            reviewTitle
+            reviewBody
+            fee
+            username
+            createdAt
+        }
+    }     
+`
+
+export const QUERY_CHECKOUT = gql`
+    query getCheckout($services: [ID]!) {
+        checkout(services: $services ) {
+            session
+        }
+    }
+` 
