@@ -64,7 +64,7 @@ const resolvers = {
         allservices: async () => {
             return Service.find()
                 .populate('reviews')
-                .populate('county')
+                .populate('county')          
         },
         order: async (parent, { _id }, context) => {
             if (context.user) {

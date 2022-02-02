@@ -105,6 +105,24 @@ export const QUERY_SERVICES = gql`
     }     
 `
 
+export const QUERY_ALL_SERVICES = gql`
+    query allservices {
+        allservices {
+        _id
+        serviceTitle
+        serviceBody
+        fee
+        username
+        county {
+            _id
+            name
+        }
+        reviewCount
+        createdAt
+        }
+    }  
+`
+
 export const QUERY_COUNTIES = gql`
     query counties {
         counties {
