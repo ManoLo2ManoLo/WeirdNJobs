@@ -5,12 +5,13 @@ import { useMutation } from '@apollo/client';
 import { ADD_ORDER } from '../utils/mutations';
 
 
-function Success(props) {
+function Success() {
   const { serviceId: id } = useParams();
   const [addOrder] = useMutation(ADD_ORDER);
-  const services = id;
 
   useEffect(() => {
+    const services = id
+
     async function saveOrder() {
       await addOrder({ variables: { services } });
 
