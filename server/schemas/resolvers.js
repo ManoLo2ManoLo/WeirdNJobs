@@ -31,7 +31,7 @@ const resolvers = {
             return Service.find(params).sort({ createdAt: -1 });
         },
         service: async (parent, { _id }) => {
-            return await Service.findById(_id).populate('county');
+            return await Service.findById(_id).populate('county').populate('reviews');
         },
         users: async (parent, args, context) => {
             if (context.user) {

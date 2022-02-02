@@ -14,6 +14,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
+import SingleService from './pages/SingleService';
 
 const httpLink = createHttpLink({
   uri: '/graphql'
@@ -47,6 +48,7 @@ const App = () => {
             <Route exact path='/signup' component={Signup} />
             <Route exact path='/profile' component={Profile} />
             <Route exact path='/profile/:username?' component={Profile} />
+            <Route exact path='/service/:serviceId' component={SingleService} />
           </Switch>
           </div>
         </div>
