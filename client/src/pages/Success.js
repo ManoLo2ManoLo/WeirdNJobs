@@ -22,7 +22,6 @@ function Success(props) {
         saveOrder()
     }, [addOrder])
 
-
     return (
       <div>
           <h1>Success!</h1>

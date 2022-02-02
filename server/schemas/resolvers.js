@@ -11,7 +11,21 @@ const resolvers = {
                     .select('-__v -password')
                     .populate('services')
                     .populate('orders')
+                    .populate({
+                        path: 'orders',
+                        populate: {
+                            path: 'services',
+                            model: 'Service'
+                        }
+                    })
                     .populate('reviews')
+                    .populate({
+                        path: 'reviews',
+                        populate: {
+                            path: 'reviews',
+                            model: 'Review'
+                        }
+                    })
 
                 return userData;
             }

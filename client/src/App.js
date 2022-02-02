@@ -16,6 +16,7 @@ import Home from './pages/Home';
 import Profile from './pages/Profile';
 import SingleService from './pages/SingleService';
 import Success from './pages/Success'
+import MyOrder from './pages/MyOrder'
 
 const httpLink = createHttpLink({
   uri: '/graphql'
@@ -51,6 +52,7 @@ const App = () => {
             <Route exact path='/profile/:username?' component={Profile} />
             <Route exact path='/service/:serviceId' component={SingleService} />
             <Route exact path="/:serviceId/success" component={Success} />
+            <Route exact path="/myorders" component={MyOrder} />
           </Switch>
           </div>
         </div>
