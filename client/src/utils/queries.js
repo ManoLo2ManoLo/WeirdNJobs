@@ -8,6 +8,7 @@ export const GET_ME = gql`
             lastName
             username
             county
+            email
             profileImage
             description
             services {
@@ -101,6 +102,27 @@ export const QUERY_SERVICES = gql`
             fee
             username
             createdAt
+        }
+    }     
+`
+export const QUERY_SERVICE = gql`
+    query service($id: ID!) {
+        service(_id: $id) {
+            _id
+            serviceTitle
+            serviceBody
+            fee
+            username
+            createdAt
+            reviewCount
+            reviews {
+                _id
+                reviewTitle
+                reviewBody
+                username
+                rating
+                createdAt
+            }
         }
     }     
 `
