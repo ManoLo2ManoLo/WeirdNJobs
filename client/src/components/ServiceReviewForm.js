@@ -44,9 +44,8 @@ function ServiceReviewForm() {
             console.log(e)
         }
     }
-
     return (
-        <form className='container box' onSubmit={handleFormSubmit}>
+        <form className='container box tagger' onSubmit={handleFormSubmit}>
             <div className='field'>
                 <label className='label'>Service Review Title:</label>
                 <div className='control'>
