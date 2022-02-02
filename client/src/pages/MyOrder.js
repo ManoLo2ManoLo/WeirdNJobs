@@ -16,7 +16,7 @@ function MyOrder() {
                     <header className='card-header footer-head'>
                         <a href={`/profile/${order.services[0].username}`}><p className='card-header-title width30'>@{order.services[0].username}</p></a>
                         <p className='card-header-title width30 is-underlined'>{order.services[0].serviceTitle}</p>
-                        <h2 className='card-header-title is-italic'>Purchased on: {user?.orders[0].purchaseDate}</h2>
+                        <h2 className='card-header-title is-italic'>Purchased on: {order.purchaseDate}</h2>
                     </header>
                 
                     <div className='card-content footer-content'>
