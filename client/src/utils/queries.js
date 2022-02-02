@@ -175,3 +175,11 @@ export const QUERY_REVIEW = gql`
         }
     }     
 `
+
+export const QUERY_CHECKOUT = gql`
+    query getCheckout($services: [ID]!) {
+        checkout(services: $services ) {
+            session
+        }
+    }
+` 
