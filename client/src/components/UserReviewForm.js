@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_USER_REVIEW } from '../utils/mutations';
 
 function UserReviewForm() {
     const [ formState, setFormState ] = useState({reviewTitle: '', reviewBody: '', rating: ''});
-    const { usernameId:id} = useParams();
-    const usernameId=id;
+    // const { usernameId:id} = useParams();
+    // const usernameId=id;
 
     const [ addUserReview ] = useMutation(ADD_USER_REVIEW);
 

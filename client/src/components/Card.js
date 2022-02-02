@@ -3,6 +3,8 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_SERVICES } from '../utils/queries';
 
+import PurchaseButton from './PurchaseButton';
+
 function Card() {
     const { data } = useQuery(QUERY_ALL_SERVICES);
 
@@ -25,9 +27,12 @@ function Card() {
                             <p className='card-footer-item width30 is-italic'>{service.createdAt}</p>
                         </footer>
                         <div className='card-content footer-head'>
-                            <button className='box button button-color'>
-                                <a href={`/service/${service._id}`}>View {service.reviewCount} review(s)</a>
-                            </button>
+                            <div className='flex-row'>
+                                <button className='box button button-color'>
+                                    <a href={`/service/${service._id}`}>View {service.reviewCount} review(s)</a>
+                                </button>
+                                <PurchaseButton dataFromParent = {service._id} />
+                            </div>
                         </div>
                     </div>
                 ))}

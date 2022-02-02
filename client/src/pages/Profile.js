@@ -10,6 +10,7 @@ import Auth from"../utils/auth";
 
 import ServiceForm from '../components/ServiceForm';
 import UserReviewForm from '../components/UserReviewForm';
+import PurchaseButton from '../components/PurchaseButton';
 
 const Profile = () => {
     const { username: userParam } = useParams();
@@ -77,9 +78,12 @@ const Profile = () => {
                                 <p className='card-footer-item width30 is-italic'>{service.createdAt}</p>
                             </footer>
                             <div className='card-content footer-head'>
-                                <button className='box button button-color'>
-                                    <a href={`/service/${service._id}`}>View {service.reviewCount} review(s)</a>
-                                </button>
+                                <div className='flex-row'>
+                                    <button className='box button button-color'>
+                                        <a href={`/service/${service._id}`}>View {service.reviewCount} review(s)</a>
+                                    </button>
+                                    <PurchaseButton dataFromParent = {service._id} />
+                                </div>
                             </div>
                         </div>
                     ))}
