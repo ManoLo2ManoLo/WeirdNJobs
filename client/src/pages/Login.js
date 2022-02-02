@@ -33,7 +33,7 @@ function Login() {
     }
 
     return (
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit} className='box my-5'>
             <div className='field'>
                 <label className='label flex-center'>Email</label>
                 <div className='control flex-center'>

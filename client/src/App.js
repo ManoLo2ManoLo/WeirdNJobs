@@ -40,6 +40,7 @@ const App = () => {
       <Router>
         <div>
           <Nav />
+          <div className='container'>
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/login' component={Login} />
@@ -47,6 +48,7 @@ const App = () => {
             <Route exact path='/profile' component={Profile} />
             <Route exact path='/profile/:username?' component={Profile} />
           </Switch>
+          </div>
         </div>
       </Router>
     </ApolloProvider>
