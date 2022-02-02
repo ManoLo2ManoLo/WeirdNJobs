@@ -41,6 +41,38 @@ code {
   width: 50%;
 }
 
+.width36 {
+  width: 36%
+}
+
+.tags {
+  background-color: #e9edf0;
+}
+
+.footer-head{
+  background-color: #e9edf0;
+}
+
+.strong {
+  font-style: bold;
+}
+
+.image-shadow{
+  box-shadow: 1px 1px 8px 1px rgb(228, 228, 228);
+}
+
+.footer-content{
+ background-color: #eff5fb;
+}
+
+.footers{
+  background-color: #cfd4d8;
+}
+
+.button-color{
+  background-color: #eff5fb;
+}
+
 .mx-0 {
   margin-right: 0;
   margin-left: 0;

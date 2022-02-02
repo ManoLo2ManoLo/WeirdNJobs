@@ -40,35 +40,47 @@ const Profile = () => {
         <div className='container'>
             <div className='flex-row-even'>
                 <div className='width50'>
-                    <h1>{user.firstName} {user.lastName}</h1>
-                    <h2>@{user.username}</h2>
-
-                    <div>
-                        <img src={profile} alt='profile'/>
+                    <div className='box width36 tags'>
+                        <h1>{user.firstName} {user.lastName}</h1>
+                        <h2 className='has-text-weight-bold mx-2'>@{user.username}</h2>
                     </div>
 
-                    <p>{user.county} County</p>
+                    <div>
+                        <img src={profile} className='image-shadow' alt='profile'/>
+                    </div>
+                    <div className='box width36 tags has-text-weight-bold is-underlined'>
+                        <p>{user.county} County</p>
+                    </div>
+                    
                 </div>
                 <div className='width50'>
                     {userParam ? <UserReviewForm/>: <ServiceForm/> }
 
+                    {/* Start of service card */}
+
                     {user.services.map(service => (
                         <div className='card my-4'>
-                            <header className='card-header'>
+                            <header className='card-header footer-head'>
                                 <p className='card-header-title width30'>@{user.username}</p>
-                                <p className='card-header-title width30'>{service.serviceTitle}</p>
+                                <p className='card-header-title width30 is-underlined'>{service.serviceTitle}</p>
                             </header>
-                            <div className='card-content'>
-                                <div className='content'>
+                            <div className='card-content footer-content'>
+                                <div className='content footer-content'>
                                     {service.serviceBody}
                                 </div>
                             </div>
                             <footer className='flex-row'>
-                                <p className='card-footer-item width30'>Consultation Fee: ${service.fee}</p>
-                                <p className='card-footer-item width30'>{service.createdAt}</p>
+                                <p className='card-footer-item width30 is-italic'>Consultation Fee: ${service.fee}</p>
+                                <p className='card-footer-item width30 is-italic'>{service.createdAt}</p>
                             </footer>
+                            <div className='card-content footer-head'>
+                                <button className='box button button-color'>
+                                    <a href={`/service/${service._id}`}>View {service.reviewCount} review(s)</a>
+                                </button>
+                            </div>
                         </div>
                     ))}
+                    {/* End of service card  */}
                 </div>
             </div>
         </div>

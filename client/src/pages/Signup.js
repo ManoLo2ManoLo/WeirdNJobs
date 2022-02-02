@@ -44,7 +44,7 @@ function Signup() {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit} className='box my-5'>
       <div className='field'>
         <label className='label flex-center'>First Name</label>
         <div className='control flex-center'>
@@ -116,15 +116,6 @@ function Signup() {
               <option>Warren</option>
             </select>
           </div>
-        </div>
-      </div>
-
-      <div className='field'>
-        <div className='control'>
-          <label className='checkbox flex-center'>
-            <input type='checkbox' className='flex-center' onChange={handleChange}></input>
-            I agree to the <a href='#terms'>terms and conditions.</a>
-          </label>
         </div>
       </div>
       <div className='buttons flex-center'>
