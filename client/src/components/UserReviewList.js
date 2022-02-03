@@ -1,11 +1,12 @@
 import React from 'react';
 
 function UserReviewList(props) {
-    const reviews = props.dataFromParent
+    const reviews = props.dataFromParent || [];
 
     return (
         <div>
-            <h1>Reviews</h1>
+            <h1 className='title is-1'>Reviews</h1>
+
             {reviews.map(review => (
                 <div className='card my-4'>
                     <header className='card-header footer-head'>

@@ -21,7 +21,7 @@ function Success() {
     }
 
     saveOrder()
-  }, [addOrder])
+  }, [addOrder, id])
 
 
   return (
