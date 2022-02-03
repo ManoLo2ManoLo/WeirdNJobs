@@ -2,8 +2,7 @@
   "name": "weirdnjobs",
   "version": "1.0.0",
   "description": "npx create-react-app client\r npm install -D concurrently",
-  "main": "index.js",
-  "dependencies": {},
+  "main": "server/server.js",
   "devDependencies": {
     "concurrently": "^7.0.0"
   },
