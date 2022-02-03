@@ -3,7 +3,8 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
 import { QUERY_CHECKOUT } from '../utils/queries'
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripeURL = process.env.STRIPE_URL || 'pk_test_TYooMQauvdEDq54NiTphI7jx'
+const stripePromise = loadStripe(`${stripeURL}`);
 
 function PurchaseButton(props) {
     let serviceId = props.dataFromParent;
