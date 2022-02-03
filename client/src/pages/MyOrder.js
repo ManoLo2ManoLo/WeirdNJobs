@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery, useSubscription } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { GET_ME } from "../utils/queries";
 
 function MyOrder() {
