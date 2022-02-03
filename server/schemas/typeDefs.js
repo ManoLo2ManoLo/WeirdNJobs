@@ -79,7 +79,7 @@ const typeDefs = gql`
         updateUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!, county: String!, profileImage: String!, description: String!) : User
         login(email: String!, password: String!): Auth
         addService(serviceTitle: String!, serviceBody: String!, fee: Int!) : Service
-        addUserReview(userId: ID!, reviewTitle: String!, reviewBody: String!, rating: Int!) : User
+        addUserReview(username: String!, reviewTitle: String!, reviewBody: String!, rating: Int!) : User
         addServiceReview(serviceId: ID!, reviewTitle: String!, reviewBody: String!, rating: Int!) : Service
     }
 `;

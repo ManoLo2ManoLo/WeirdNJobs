@@ -21,6 +21,12 @@ code {
   justify-content: center;
 }
 
+.flex-column {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
 .flex-row-even {
   display: flex;
   flex-flow: row wrap;

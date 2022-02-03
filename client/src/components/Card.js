@@ -2,20 +2,33 @@ import React from 'react';
 
 import { useQuery } from '@apollo/client';
 import { QUERY_ALL_SERVICES } from '../utils/queries';
-
 import PurchaseButton from './PurchaseButton';
 
-function Card() {
+function Card({ currentCounty }) {
     const { data } = useQuery(QUERY_ALL_SERVICES);
+
+    const counties = data?.allservices || [];
+
+    function filterProducts() {
+        if(!currentCounty) {
+            return counties;
+        }
+
+        return counties.filter(
+            (county) => county.county._id === currentCounty
+
+        )
+    }
 
     return (
         <>
-            <div className='container flex-row-center'>
-                {data?.allservices.map(service => (
-                    <div className='card my-5 width36 mx-5 heightauto'>
+            <div className='container flex-column'>
+                {filterProducts().map((service) => (
+                    <div className='card my-5 mx-5 heightauto'>
                         <header className='card-header footer-head'>
                             <a href={`/profile/${service.username}`}><p className='card-header-title width30'>@{service.username}</p></a>
                             <p className='card-header-title width30 is-underlined'>{service.serviceTitle}</p>
+                            <p className='card-header-title width30 is-underlined'>{service.county.name} County</p>
                         </header>
                         <div className='card-content footer-content'>
                             <div className='content footer-content'>
