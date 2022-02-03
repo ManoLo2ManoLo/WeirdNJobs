@@ -3,8 +3,8 @@ import { useQuery } from '@apollo/client';
 import { QUERY_COUNTIES } from '../utils/queries';
 
 function CountyMenu({ setCounty }) {
-    const { data: data } = useQuery(QUERY_COUNTIES);
-    const counties = data?.counties || [];
+    const { data: list } = useQuery(QUERY_COUNTIES);
+    const counties = list?.counties || [];
 
     return (
         <div className='box'>

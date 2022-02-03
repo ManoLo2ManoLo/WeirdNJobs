@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import profile from '../assets/images/default.png';
 
@@ -12,15 +12,21 @@ import ServiceForm from '../components/ServiceForm';
 import UserReviewForm from '../components/UserReviewForm';
 import PurchaseButton from '../components/PurchaseButton';
 import UserReviewList from '../components/UserReviewList';
+import Modal from '../components/Modal'
 
 const Profile = () => {
     const { username: userParam } = useParams();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const { loading, data } = useQuery(userParam ? QUERY_USER : GET_ME, {
         variables: { username: userParam }
     })
 
     const user = data?.me || data?.user || {};
+
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
+    }
 
     if (loading) {
         return <div>Loading...</div>;
@@ -40,24 +46,35 @@ const Profile = () => {
 
     return (
         <div className='container'>
+            {isModalOpen &&(
+                    <Modal onClose={toggleModal} />
+            )}
+
             <div className='flex-row-even'>
                 <div className='width50'>
-                    <div className='box width36 tags'>
+                    <div className='box width50 tags'>
                         <h1>{user.firstName} {user.lastName}</h1>
                         <h2 className='has-text-weight-bold mx-2'>@{user.username}</h2>
                     </div>
 
+                    {/* <div>
+                        <button 
+                            className='box button is-info is-light is-small my-1'
+                            onClick={() => toggleModal()}
+                        >Upload Profile Picture</button>
+                    </div> */}
+
                     <div>
                         <img src={profile} className='image-shadow size-change' alt='profile'/>
                     </div>
-                    <div className='box width36 tags has-text-weight-bold is-underlined'>
+                    <div className='box width50 tags has-text-weight-bold is-underlined'>
                         <p>{user.county} County</p>
                     </div>
-                    <div className='box width36 tags is-italic'>
+                    <div className='box width50 tags is-italic'>
                         <p>If you have any questions, please email me at <a href={`mailto: ${user.email}`}>{user.email}</a></p>
                     </div>
 
-                    <div className='box width36 tags is-italic'>
+                    <div className='box width50 tags is-italic'>
                         <UserReviewList dataFromParent = {user.reviews}/>
                     </div>
                     
