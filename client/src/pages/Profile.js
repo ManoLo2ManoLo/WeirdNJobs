@@ -11,6 +11,7 @@ import Auth from"../utils/auth";
 import ServiceForm from '../components/ServiceForm';
 import UserReviewForm from '../components/UserReviewForm';
 import PurchaseButton from '../components/PurchaseButton';
+import UserReviewList from '../components/UserReviewList';
 
 const Profile = () => {
     const { username: userParam } = useParams();
@@ -54,6 +55,10 @@ const Profile = () => {
                     </div>
                     <div className='box width36 tags is-italic'>
                         <p>If you have any questions, please email me at <a href={`mailto: ${user.email}`}>{user.email}</a></p>
+                    </div>
+
+                    <div className='box width36 tags is-italic'>
+                        <UserReviewList dataFromParent = {user.reviews}/>
                     </div>
                     
                 </div>

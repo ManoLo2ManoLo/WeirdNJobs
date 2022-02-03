@@ -201,10 +201,10 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        addUserReview: async (parent, {userId, reviewTitle, reviewBody, rating}, context) => {
+        addUserReview: async (parent, {username, reviewTitle, reviewBody, rating}, context) => {
             if (context.user) {
                 const updateUser = await User.findOneAndUpdate(
-                    { _id: userId },
+                    { username: username },
                     { $push: { reviews: {reviewTitle, reviewBody, rating, username: context.user.username } } },
                     { new: true, runValidators: true }
                 );

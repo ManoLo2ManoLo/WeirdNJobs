@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 import { useMutation } from '@apollo/client';
 import { ADD_USER_REVIEW } from '../utils/mutations';
 
 function UserReviewForm() {
     const [ formState, setFormState ] = useState({reviewTitle: '', reviewBody: '', rating: ''});
-    // const { usernameId:id} = useParams();
-    // const usernameId=id;
+    const { username : data } = useParams();
+    const username = data;
 
     const [ addUserReview ] = useMutation(ADD_USER_REVIEW);
 
@@ -17,9 +18,6 @@ function UserReviewForm() {
         
         formState.rating = value;
     }
-
-
-    
 
      // UPDATES FORMSTATE ON INPUT BOXES
     const handleChange = (event) => {
@@ -36,7 +34,7 @@ function UserReviewForm() {
         try {
             await addUserReview({
                 variables: {
-                    // reviewId,
+                    username,
                     reviewTitle: formState.reviewTitle,
                     reviewBody: formState.reviewBody,
                     rating: formState.rating
@@ -51,7 +49,7 @@ function UserReviewForm() {
 
     
     return (
-        < form className='container'>
+        < form className='container' onSubmit={handleFormSubmit}>
             <div className='field'>
                 <label className='label'>Review Title:</label>
                 <div className='control'>

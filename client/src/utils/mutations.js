@@ -38,8 +38,8 @@ export const ADD_SERVICE = gql`
 `
 
 export const ADD_USER_REVIEW = gql`
-    mutation addUserReview($userId: ID!, $reviewTitle: String!, $reviewBody: String!, $rating: Int!) {
-        addUserReview(userId: $userId, reviewTitle: $reviewTitle, reviewBody: $reviewBody, rating: $rating) {
+    mutation addUserReview($username: String!, $reviewTitle: String!, $reviewBody: String!, $rating: Int!) {
+        addUserReview(username: $username, reviewTitle: $reviewTitle, reviewBody: $reviewBody, rating: $rating) {
             _id
         }
     }
