@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Auth from '../utils/auth'
+
 import { useMutation } from '@apollo/client';
 import { ADD_SERVICE } from '../utils/mutations';
 import { QUERY_SERVICES, GET_ME } from '../utils/queries';
@@ -55,12 +55,7 @@ function ServiceForm() {
         });
       };
 
-    if (!Auth.getProfile) {
-        return (
-            <div></div>
-        )
-    }
-
+    
     return (
         <form onSubmit={handleFormSubmit} className='box'>
             <div className='field'>

@@ -18,6 +18,14 @@ const SingleService = () => {
 
     const service = data?.service;
 
+    function showReviewForm() {
+        if (Auth.loggedIn()) {
+            return (
+                <ServiceReviewForm/>
+            )
+        }
+    }
+
     return (
         <div>
             <div className='card my-4'>
@@ -43,8 +51,7 @@ const SingleService = () => {
                     </div>
                 </div>
             </div>
-            {Auth.loggedIn ? <ServiceReviewForm/>: ''}
-            
+            {showReviewForm()}
             <ServiceReviewList/>
         </div>
     )

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-
 import { useMutation } from '@apollo/client';
 import { ADD_SERVICE_REVIEW } from '../utils/mutations'
 
@@ -44,6 +43,7 @@ function ServiceReviewForm() {
             console.log(e)
         }
     }
+
     return (
         <form className='container box tagger' onSubmit={handleFormSubmit}>
             <div className='field'>
