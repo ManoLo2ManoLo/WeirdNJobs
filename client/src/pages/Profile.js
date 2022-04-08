@@ -57,12 +57,12 @@ const Profile = () => {
                         <h2 className='has-text-weight-bold mx-2'>@{user.username}</h2>
                     </div>
 
-                    {/* <div>
+                    <div>
                         <button 
                             className='box button is-info is-light is-small my-1'
                             onClick={() => toggleModal()}
                         >Upload Profile Picture</button>
-                    </div> */}
+                    </div>
 
                     <div>
                         <img src={profile} className='image-shadow size-change' alt='profile'/>
