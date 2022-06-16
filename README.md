@@ -11,7 +11,8 @@ Link to Application: https://three-headed-goats-weirdnjobs.herokuapp.com/
 
 # Table of Contents 
 
-* [Description](#description)
+* [Features](#features)
+* [User Story](#user-story)
 * [Clone Repository](#clone-repository)
 * [Install Dependencies](#install-dependencies)
 * [Start Application](#start-application)
@@ -19,10 +20,14 @@ Link to Application: https://three-headed-goats-weirdnjobs.herokuapp.com/
 * [Credit](#credit)
 * [License](#license)
 
+## Features
+    1. User can create an account or login.
+    2. User can post the weird services they are offering.
+    3. User can purchase those services that are posted by other user.
+    4. User can leave reviews to other other users, or to the service.
 
-## Description
-This application is a webpage that hosts the weirdos of New Jersey and their services. With the application, a user can create an account and create job service posts
-in which another user can purchase the needs that they would like. It's for the niche things that people really don't touch up upon.
+## User Story
+As a user, I am looking for a site that will allow me to search for services that are usually not a normally offered service that are offered by companies. I would also would liek to post services that I offer.
 
 ## Clone Repository
 * git clone https://github.com/ManoLo2ManoLo/WeirdNJobs.git
